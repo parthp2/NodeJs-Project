@@ -21,8 +21,8 @@ if(command=='add')
 
     if(note)
     {
-        console.log("Notes added successfuly with title:",note.title," and body:",note.body);
-       
+        console.log("---Note Added---");
+        notes.logNote(note);
     }
     else{
         console.log("Notes title is already in use");
@@ -30,7 +30,16 @@ if(command=='add')
 }
 else if(command=='read')
 {
-    notes.getNote(args.title);
+   var note= notes.getNote(args.title);
+
+   if(note)
+   {
+       console.log("---Note Found---");
+       notes.logNote(note);
+   }
+   else{
+       console.log('Note not found');
+   }
 }
 else if(command=='remove')
 {
