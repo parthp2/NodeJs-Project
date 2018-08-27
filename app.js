@@ -34,7 +34,11 @@ else if(command=='read')
 }
 else if(command=='remove')
 {
-    notes.removeNote(args.title);
+    var result=notes.removeNote(args.title);
+
+    var message= result ? 'Note removed successfully': 'Note not removed';
+
+    console.log(message);
 }
 else if(command=='list')
 {

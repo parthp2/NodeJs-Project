@@ -33,7 +33,6 @@ var addNote = (title,body) =>{
     {
         notes.push(note);
         saveNotes(notes);
-        console.log(note);
         return note;
     }
     
@@ -49,7 +48,14 @@ var getNote = (title) =>{
 }
 
 var removeNote = (title) =>{
-    console.log("remove notes",title);
+    //fecth notes
+    var notes=fetchNotes();
+    //filter notes,removing the one with title of argument
+    var newNotes= notes.filter((note)=> note.title!==title)
+    //save new notes array
+    saveNotes(newNotes);
+
+    return notes.length!==newNotes.length;
 }
 
 module.exports= {
