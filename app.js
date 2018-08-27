@@ -17,7 +17,16 @@ console.log('yargs',args);
 
 if(command=='add')
 {
-    notes.addNote(args.title,args.body);
+    var note=notes.addNote(args.title,args.body);
+
+    if(note)
+    {
+        console.log("Notes added successfuly with title:",note.title," and body:",note.body);
+       
+    }
+    else{
+        console.log("Notes title is already in use");
+    }
 }
 else if(command=='read')
 {
