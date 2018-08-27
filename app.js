@@ -4,7 +4,31 @@ const yargs=require('yargs');
 
 const notes= require('./notes.js');
 
-var args=yargs.argv;
+const titleOption= {
+    describe:'Title of note',
+    demand:true,
+    alias:'t'
+};
+
+const bodyOption={
+    describe:'Body of note',
+    demand:true,
+    alias:'b'
+};
+
+var args=yargs.command('add','Add new notes',{
+    title:titleOption,
+    body:bodyOption
+})
+.command('read','Read note',{
+    title:titleOption
+})
+.command('list','give list of all the notes from file')
+.command('remove','remove notes from file',{
+    title:titleOption
+})
+.help()
+.argv;
 
 var command = args._[0];
 
