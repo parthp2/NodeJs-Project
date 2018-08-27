@@ -1,5 +1,3 @@
-console.log('starting app.js');
-
 const fs = require('fs');
 const _ =require('lodash');
 const yargs=require('yargs');
@@ -9,10 +7,6 @@ const notes= require('./notes.js');
 var args=yargs.argv;
 
 var command = args._[0];
-
-
-
-console.log('yargs',args);
 
 
 if(command=='add')
@@ -51,7 +45,10 @@ else if(command=='remove')
 }
 else if(command=='list')
 {
-    notes.getAll();
+   var allNotes= notes.getAll();
+    console.log(`Printing ${allNotes.length} node(s)`);
+
+    allNotes.forEach((note) => notes.logNote(note));
 }
 else{
     console.log('command not found');
